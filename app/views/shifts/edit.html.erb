@@ -1,0 +1,37 @@
+<h2> Edit Shift </h2>
+<%= form_with model: @shift, local: true, scope: :shift do |f| %>
+    <% if @shift.errors.any? %>
+        <div class="error_messages">
+          <h3><font color="red">Form is invalid</font></h3>
+          <ul>
+            <% for message in @shift.errors.full_messages %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <table style="width:100%">
+        <thead>
+            <tr>
+                <th>Employee name</th>
+                <th>Shift date</th>
+                <th>Start time</th>
+                <th>Finish time</th>
+                <th>Break length (minutes)</th>
+                <th>Hours worked</th>
+                <th>Shift cost</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td style="text-align: left;"><%= current_user.name %></td>
+                <td><%= f.date_field :date%></td>
+                <td><%= f.time_field :start%></td>
+                <td><%= f.time_field :finish%></td>
+                <td><%= f.number_field :break_length%></td>
+                <td colspan="3"><%= f.submit "Update" %></td>
+            </tr>
+        </tbody>
+    </table>
+<% end %>

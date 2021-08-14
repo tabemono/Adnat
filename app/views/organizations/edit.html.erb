@@ -1,0 +1,21 @@
+<h2> Edit organization </h2>
+<%= form_with model: @organization, local: true do |f| %>
+    <% if @organization.errors.any? %>
+        <div class="error_messages">
+            <h3><font color="red">Form is invalid</font></h3>
+            <ul>
+                <% for message in @organization.errors.full_messages %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <p>
+        <%= f.label :"Name:" %>
+        <%= f.text_field :name %><br />
+        <%= f.label :"Hourly rate: $" %>
+        <%= f.number_field :hourly_rate, step: :any%> per hour<br />
+    </p>
+    <p class="button"><%= f.submit "Update" %></p>
+<%end%>
+<%= link_to "Delete", organization_path(id: @organization.id), :method => :delete, data: {confirm: "Are you sure?"} %>
