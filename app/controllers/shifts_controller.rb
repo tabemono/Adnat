@@ -10,8 +10,8 @@ class ShiftsController < ApplicationController
 
     def create
         date = shift_params[:date]
-        start_datetime = combine_date_time(date, shift_params[:start])
-        finish_datetime = combine_date_time(date, shift_params[:finish])
+        start_datetime = parse_date_time(date, shift_params[:start])
+        finish_datetime = parse_date_time(date, shift_params[:finish])
         @shift = Shift.create(user_id: current_user.id, start: start_datetime, finish: finish_datetime, break_length: shift_params[:break_length])
         if @shift.save
             redirect_to shifts_path
@@ -27,8 +27,8 @@ class ShiftsController < ApplicationController
 
     def update
         date = shift_params[:date]
-        start_datetime = combine_date_time(date, shift_params[:start])
-        finish_datetime = combine_date_time(date, shift_params[:finish])
+        start_datetime = parse_date_time(date, shift_params[:start])
+        finish_datetime = parse_date_time(date, shift_params[:finish])
         @shift = Shift.update(params[:id], start: start_datetime, finish: finish_datetime, break_length: shift_params[:break_length])
         if @shift.errors.any?
             render "edit"
@@ -43,13 +43,13 @@ class ShiftsController < ApplicationController
     end
 
 private
-    def combine_date_time(date, time)
-        # combine a date and time in string format into a DateTime object
+    def parse_date_time(date, time)
+        # parse into time format
         Time.zone.parse(date + " " + time)
     end
 
     def calc_shift_length(start, finish)
-        # Considers overnight shifts
+        # overnight shift
         if start.before? finish
             # same-day shift
             (finish - start) / 60 / 60
