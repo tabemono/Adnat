@@ -94,7 +94,7 @@ private
         @organization = Organization.find(current_user.organization_id)
       
         @shifts = Shift.includes(:user).where(users: {organization_id: current_user.organization_id}).order(created_at: :desc)
-            #store in hash map
+        #store in hash
         @names = {} # store the User's name
         @hours_worked = {} # store hours worked
         @shift_costs = {} # store shift costs
