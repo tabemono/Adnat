@@ -7,3 +7,8 @@ cd wf_challenge
 bundle install
 <br/>
 rails s to start the server on localhost:3000/
+
+### Optional exercises
+
+Users details
+<br/>
