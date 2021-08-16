@@ -99,4 +99,4 @@ rails s to start the server on localhost:3000/
    }
    ```
 
-4. Multiple organizations
+4. Multiple organizations and Filtering shifts.
