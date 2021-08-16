@@ -15,10 +15,10 @@ class ShiftsController < ApplicationController
       
         @shift = Shift.create(
             organization_id: current_user.organization_id,
-             user_id: current_user.id,
-             start: start_datetime, 
-             finish: finish_datetime, 
-             break_length: shift_params[:break_length]
+            user_id: current_user.id,
+            start: start_datetime, 
+            finish: finish_datetime, 
+            break_length: shift_params[:break_length]
             )
         
         if @shift.save
@@ -70,7 +70,7 @@ private
     def calc_shift_cost(start, finish, hours, rate, break_hours)
         sunday_hours = 0
         normal_hours = 0
-       #sunday penalty?
+       #sunday penaltys
         if start.before? finish
             # same-day shift
             if start.sunday? 
@@ -101,10 +101,10 @@ private
     
         @organization = Organization.find(current_user.organization_id)
       
-         # use active records to filter out existing shifts to the specific organization
+        
         @shifts = Shift.includes(:organization).where(shifts: {organization_id: current_user.organization_id}).order(created_at: :desc)
         #store in hash
-        @names = {} # store the User's name
+        @names = {} # store the Users'
         @hours_worked = {} # store hours worked
         @shift_costs = {} # store shift costs
 
@@ -112,8 +112,13 @@ private
             @names[shift] = User.find(shift.user_id).name
             shift_length = calc_shift_length(shift.start, shift.finish)
             hours_worked = shift_length - Float(shift.break_length) / 60
-            shift_cost = calc_shift_cost(shift.start, shift.finish, hours_worked, @organization.hourly_rate, Float(shift.break_length)/60)
-            ###
+            shift_cost = calc_shift_cost(
+                shift.start, 
+                shift.finish, 
+                hours_worked, 
+                @organization.hourly_rate, 
+                Float(shift.break_length)/60
+            )
             @hours_worked[shift] = hours_worked.round(2)
             @shift_costs[shift] = shift_cost.round(2)
         end
