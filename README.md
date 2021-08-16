@@ -65,7 +65,7 @@ rails s to start the server on localhost:3000/
 ## Excercises not complete
 
 1. Departed Employee Shift storage
-   My idea would've been creating a new table for departed employees as a new schema and add to this table whenever a employee leaves the organization.
+   My idea would've been creating a new table for departed employees as a new schema and add to this table whenever a employee leaves the organization and add possibly a depedent on the shifts to remove it prior.
 
 2. Multiple breaks
    Add these breaks into a data structure, possibly an array and sum that data to be the total break_length. Possibly with the frontend side and add how many breaks taken and then seperate them into x amount of structures.
@@ -98,3 +98,5 @@ rails s to start the server on localhost:3000/
        })
    }
    ```
+
+4. Multiple organizations
