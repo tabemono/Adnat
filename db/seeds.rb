@@ -41,12 +41,29 @@ sallys_sandwiches = Organization.create!(
     hourly_rate: 0.11e2
 )
 
-# shift1 = Shift.create!(
-#     user_id: jane.id,
-#     start: "2019-07-02 10:15:00",
-#     finish: "2019-07-02 13:15:00",
-#     break_length: 0
-# )
+shift1 = Shift.create!(
+    user_id: jane.id,
+    organization_id: bobs_burger.id,
+    start: "2019-07-02 10:15:00",
+    finish: "2019-07-02 13:15:00",
+    break_length: 0
+)
+shift2 = Shift.create!(
+    user_id: john.id,
+    organization_id: bobs_burger.id,
+    start: "2019-05-02 9:00:00",
+    finish: "2019-05-02 13:00:00",
+    break_length: 30
+)
+
+shift3 = Shift.create!(
+    user_id: elle.id,
+    organization_id: bobs_burger.id,
+    start: "2019-01-31 11:00:00",
+    finish: "2019-01-31 23:00:00",
+    break_length: 60
+)
+
 
 
 end
