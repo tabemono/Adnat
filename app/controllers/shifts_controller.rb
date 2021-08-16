@@ -101,7 +101,8 @@ private
     
         @organization = Organization.find(current_user.organization_id)
       
-        @shifts = Shift.includes(:user).where(users: {organization_id: current_user.organization_id}).order(created_at: :desc)
+         # use active records to filter out existing shifts to the specific organization
+        @shifts = Shift.includes(:organization).where(shifts: {organization_id: current_user.organization_id}).order(created_at: :desc)
         #store in hash
         @names = {} # store the User's name
         @hours_worked = {} # store hours worked

@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 ActiveRecord::Base.transaction do 
     User.destroy_all
+    Shift.destroy_all
     Organization.destroy_all
 
 jane = User.create!(
@@ -51,7 +52,7 @@ shift1 = Shift.create!(
 shift2 = Shift.create!(
     user_id: john.id,
     organization_id: bobs_burger.id,
-    start: "2019-05-02 9:00:00",
+    start: "2019-05-02 09:00:00",
     finish: "2019-05-02 13:00:00",
     break_length: 30
 )
