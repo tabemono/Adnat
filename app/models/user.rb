@@ -1,6 +1,7 @@
 class User < ApplicationRecord
     belongs_to :organization, optional: true
-    has_many :shifts, dependent: :delete_all, inverse_of: :user
+    # has_many :shifts, dependent: :delete_all, inverse_of: :user
+    has_many :shifts, through: :organization
 
     has_secure_password
     validates_confirmation_of :password

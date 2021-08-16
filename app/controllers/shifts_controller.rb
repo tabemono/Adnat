@@ -12,7 +12,15 @@ class ShiftsController < ApplicationController
         date = shift_params[:date]
         start_datetime = parse_date_time(date, shift_params[:start])
         finish_datetime = parse_date_time(date, shift_params[:finish])
-        @shift = Shift.create(user_id: current_user.id, start: start_datetime, finish: finish_datetime, break_length: shift_params[:break_length])
+      
+        @shift = Shift.create(
+            organization_id: current_user.organization_id,
+             user_id: current_user.id,
+             start: start_datetime, 
+             finish: finish_datetime, 
+             break_length: shift_params[:break_length]
+            )
+        
         if @shift.save
             redirect_to shifts_path
         else
