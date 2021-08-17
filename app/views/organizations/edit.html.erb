@@ -18,4 +18,4 @@
     </p>
     <p class="button"><%= f.submit "Update" %></p>
 <%end%>
-<%= link_to "Delete", organization_path(id: @organization.id), :method => :delete, data: {confirm: "Are you sure?"} %>
+<%= link_to "Delete", organization_path(id: @organization.id), :method => :delete, data: {confirm: "Confirm delete"} %>
