@@ -2,11 +2,11 @@ class SessionsController < ApplicationController
 
     skip_before_action :authorized, only: [:new, :create]
  
-    def new
-        if session[:session_token]
-            redirect_to root_path
-        end
-    end
+    # def new
+    #     if session[:session_token]
+    #         redirect_to root_path
+    #     end
+    # end
 
   def create
     @user = User.find_by(email: params[:email])
@@ -14,13 +14,13 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
         login(@user)
         if @user.organization_id == nil
-            redirect_to '/welcome'
+            redirect_to welcome_path
         else
-            redirect_to '/profile'
+            redirect_to profile_path
         end        
     else
-        
-        flash.now.alert = "Invalid credentials"
+        # render json: ['email or password is invalid'], status: 422
+        flash.now.alert = "email or password is invalid"
         render :new
     end
     
