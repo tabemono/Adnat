@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-    # skip_before_action :authorized, only: [:new, :create]
+    skip_before_action :authorized, only: [:new, :create]
 
     def new 
         @user = User.new
@@ -12,6 +12,8 @@ class UsersController < ApplicationController
     
     def show
         @user = User.find(params[:id])
+
+        #use for frontend
         if @user
             render json: {
             user: @user
