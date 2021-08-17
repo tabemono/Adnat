@@ -32,7 +32,7 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         redirect_to '/welcome'
     else 
-        render 'new'
+        render :new
     end
   end
 
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   def update
     @user = User.update(current_user.id, user_params)
     if @user.errors.any?
-        render "edit"
+        render :edit
     else 
         if current_user.organization_id != nil
             redirect_to profile_path
