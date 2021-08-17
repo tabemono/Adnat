@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     def show
         @user = User.find(params[:id])
 
-        #use for frontend
+        
         if @user
             render json: {
             user: @user
