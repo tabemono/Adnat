@@ -52,7 +52,7 @@ class ShiftsController < ApplicationController
 
 private
     def parse_date_time(date, time)
-        # parse into time format
+        # parse into time format.
         Time.zone.parse(date + " " + time)
     end
 
