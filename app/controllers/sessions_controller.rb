@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
             redirect_to '/profile'
         end        
     else
-        # render json: ['email or password is invalid'], status: 422
+        
         flash.now.alert = "Invalid credentials"
         render :new
     end

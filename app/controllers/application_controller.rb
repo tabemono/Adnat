@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
     before_action :authorized, except: [:new, :create]
     helper_method :current_user
     helper_method :logged_in?
-    # protect_from_forgery with: :exception
 
     def login(user)
         session[:session_token] = user.reset_session_token! 
