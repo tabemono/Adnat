@@ -123,4 +123,6 @@ private
             @shift_costs[shift] = shift_cost.round(2)
         end
     end
+
+    
 end

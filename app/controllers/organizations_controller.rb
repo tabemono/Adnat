@@ -9,7 +9,7 @@ class OrganizationsController < ApplicationController
             User.update(current_user.id, organization_id: @organization.id)
             redirect_to profile_path
         else
-            render "sessions/welcome"
+            render "sessions#welcome"
         end
     end
 
@@ -20,7 +20,7 @@ class OrganizationsController < ApplicationController
     def update
         @organization = Organization.update(params[:id], organization_params)
         if @organization.errors.any?
-            render "edit"
+            render :edit
         else
             if current_user.organization_id != nil
                 redirect_to profile_path
