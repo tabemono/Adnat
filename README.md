@@ -70,7 +70,7 @@ rails s to start the server on localhost:3000/
 2. Multiple breaks
    Add these breaks into a data structure, possibly an array and sum that data to be the total break_length. Possibly with the frontend side and add how many breaks taken and then seperate them into x amount of structures.
 3. Single Page App / Javascript Enhancements
-   Had ideas on how i woulda structured this with react. Below would be a code snippet I woulda used for ajax calls to the backend for user authentication and then add reducers and a store to initialize the state in react.
+   Had ideas on how I would have structured this with react. Below would be a code snippet I woulda used for ajax calls to the backend for user authentication and then add reducers and a store to initialize the state in react.
 
    ```javascript
    ./util/session_api_util.js
