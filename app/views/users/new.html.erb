@@ -3,7 +3,7 @@
 <%= form_with model: @user, local: true do |f| %>
   <% if @user.errors.any? %>
     <div class="error_messages">
-        <h3><font color="red">Form is invalid</font></h3>
+        <h3><font color="red">Invalid Parameters </font></h3>
       <ul>
         <% for message in @user.errors.full_messages %>
           <li><%= message %></li>
