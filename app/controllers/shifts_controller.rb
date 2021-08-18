@@ -25,7 +25,7 @@ class ShiftsController < ApplicationController
             redirect_to shifts_path
         else
             table_details
-            render "index"
+            render :index
         end
     end
 
@@ -39,7 +39,7 @@ class ShiftsController < ApplicationController
         finish_datetime = parse_date_time(date, shift_params[:finish])
         @shift = Shift.update(params[:id], start: start_datetime, finish: finish_datetime, break_length: shift_params[:break_length])
         if @shift.errors.any?
-            render "edit"
+            render :edit
         else
             redirect_to shifts_path
         end
