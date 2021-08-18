@@ -99,4 +99,6 @@ rails s to start the server on localhost:3000/
    }
    ```
 
-4. Multiple organizations and Filtering shifts.
+4. Unit tests
+
+Did most of my testing with the gem annotate to check my schema and with postman to see if I got my routes set up correctly.
